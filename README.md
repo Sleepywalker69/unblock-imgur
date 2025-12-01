@@ -25,11 +25,5 @@ This extension automatically redirects all `imgur.com` links to a working Rimgo 
 4.  Click **"Load unpacked"**.
 5.  Select the folder containing these files.
 
-### Publishing to Web Store
-1.  Zip all the files in this folder (ensure `manifest.json` is at the root of the zip).
-2.  Upload the `.zip` to the Chrome Web Store Developer Dashboard.
-3.  Pay the registration fee (if you haven't already).
-4.  Submit for review.
-
 ## Disclaimer
 This extension uses a public Rimgo instance (`rimgo.pussthecat.org`). If this instance goes offline, you can edit `rules.json` and `forum_fix.js` to point to a different working instance.
