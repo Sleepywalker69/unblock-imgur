@@ -1,8 +1,8 @@
 {
   "manifest_version": 3,
   "name": "Unblock Imgur",
-  "description": "Redirects Imgur requests to a working mirror (Rimgo) using Manifest V3",
-  "version": "0.4",
+  "description": "Redirects Imgur to Rimgo and auto-loads direct images",
+  "version": "0.5",
   "icons": {
     "16": "icon16.png",
     "48": "icon48.png",
@@ -13,7 +13,8 @@
   ],
   "host_permissions": [
     "*://imgur.com/*",
-    "*://i.imgur.com/*"
+    "*://i.imgur.com/*",
+    "*://rimgo.pussthecat.org/*"
   ],
   "declarative_net_request": {
     "rule_resources": [
@@ -23,5 +24,12 @@
         "path": "rules.json"
       }
     ]
-  }
+  },
+  "content_scripts": [
+    {
+      "matches": ["*://rimgo.pussthecat.org/*"],
+      "js": ["content.js"],
+      "run_at": "document_idle"
+    }
+  ]
 }
