@@ -9,7 +9,7 @@
       }
     },
     "condition": {
-      "regexFilter": "^https?://(www\\.|i\\.)?imgur\.com/(.*)",
+      "regexFilter": "^https?://(www\\.|i\\.)?imgur\\.com/(.*)",
       "resourceTypes": [
         "main_frame",
         "sub_frame",
