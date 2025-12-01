@@ -3,17 +3,31 @@
     if (path.match(/\.(jpg|jpeg|png|gif|webp|mp4|webm)$/i)) {
         return;
     }
-    const images = document.querySelectorAll('img[src*="/"]');
-    let contentImages = [];
-    images.forEach((img) => {
-        if (img.width > 50 && img.height > 50 && !img.src.includes('logo')) {
-            contentImages.push(img);
+    function unwrapImage() {
+        const rimgoImage = document.querySelector('img.object-contain');
+        if (rimgoImage) {
+            let directLink = rimgoImage.src;
+            if (directLink.startsWith('/')) {
+                directLink = window.location.origin + directLink;
+            }
+            if (directLink.startsWith('http')) {
+                window.location.replace(directLink);
+                return;
+            }
         }
-    });
-    if (contentImages.length === 1) {
-        const directLink = contentImages[0].src;
-        if (directLink.startsWith('http')) {
-            window.location.replace(directLink);
+        const allImages = document.querySelectorAll('img[src*="/"]');
+        let contentImages = [];
+        
+        allImages.forEach((img) => {
+            if (!img.src.includes('logo') && !img.src.includes('avatar') && !img.src.includes('icon')) {
+                contentImages.push(img);
+            }
+        });
+        if (contentImages.length === 1) {
+            window.location.replace(contentImages[0].src);
         }
     }
+    unwrapImage();    
+    setTimeout(unwrapImage, 100);
+    setTimeout(unwrapImage, 500);
 })();
