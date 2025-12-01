@@ -2,7 +2,7 @@
   "manifest_version": 3,
   "name": "Unblock Imgur",
   "description": "Replaces Imgur embeds with Rimgo on all websites",
-  "version": "0.6",
+  "version": "0.7",
   "icons": {
     "16": "icon16.png",
     "48": "icon48.png",
@@ -27,6 +27,11 @@
     ]
   },
   "content_scripts": [
+    {
+      "matches": ["*://rimgo.pussthecat.org/*"],
+      "js": ["content.js"],
+      "run_at": "document_idle"
+    },
     {
       "matches": ["<all_urls>"],
       "js": ["forum_fix.js"],
