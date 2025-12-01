@@ -1,8 +1,8 @@
 {
   "manifest_version": 3,
   "name": "Unblock Imgur",
-  "description": "Redirects Imgur to Rimgo and auto-loads direct images",
-  "version": "0.5",
+  "description": "Replaces Imgur embeds with Rimgo on all websites",
+  "version": "0.6",
   "icons": {
     "16": "icon16.png",
     "48": "icon48.png",
@@ -14,7 +14,8 @@
   "host_permissions": [
     "*://imgur.com/*",
     "*://i.imgur.com/*",
-    "*://rimgo.pussthecat.org/*"
+    "*://rimgo.pussthecat.org/*",
+    "<all_urls>"
   ],
   "declarative_net_request": {
     "rule_resources": [
@@ -27,8 +28,8 @@
   },
   "content_scripts": [
     {
-      "matches": ["*://rimgo.pussthecat.org/*"],
-      "js": ["content.js"],
+      "matches": ["<all_urls>"],
+      "js": ["forum_fix.js"],
       "run_at": "document_idle"
     }
   ]
