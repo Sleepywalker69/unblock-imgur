@@ -3,25 +3,6 @@
     "id": 1,
     "priority": 1,
     "action": {
-      "type": "redirect",
-      "redirect": {
-        "regexSubstitution": "https://rimgo.pussthecat.org/\\2"
-      }
-    },
-    "condition": {
-      "regexFilter": "^https?://(www\\.|i\\.)?imgur\\.com/(.*)",
-      "resourceTypes": [
-        "main_frame",
-        "sub_frame",
-        "image",
-        "xmlhttprequest"
-      ]
-    }
-  },
-  {
-    "id": 2,
-    "priority": 1,
-    "action": {
       "type": "modifyHeaders",
       "requestHeaders": [
         { "header": "Referer", "operation": "remove" }
@@ -31,7 +12,8 @@
       "urlFilter": "||rimgo.pussthecat.org",
       "resourceTypes": [
         "image",
-        "xmlhttprequest"
+        "xmlhttprequest",
+        "sub_frame"
       ]
     }
   }
