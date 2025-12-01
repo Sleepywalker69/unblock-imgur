@@ -1,46 +1,27 @@
 {
-  "manifest_version": 2,
+  "manifest_version": 3,
   "name": "Unblock Imgur",
-  "description": "Loads Imgur content from DuckDuckGo proxy with basic functionality",
-  "version": "0.3",
-  "browser_specific_settings": {
-    "gecko": {
-      "id": "unblock-imgur@kraggle09.github.io",
-      "strict_min_version": "57.0"
-    }
-  },
+  "description": "Redirects Imgur requests to a working mirror (Rimgo) using Manifest V3",
+  "version": "0.4",
   "icons": {
     "16": "icon16.png",
     "48": "icon48.png",
     "128": "icon128.png"
   },
-  "browser_action": {
-    "default_icon": "icon48.png"
-  },
-  "content_scripts": [
-    {
-      "matches": [
-        "*://proxy.duckduckgo.com/*",
-        "<all_urls>"
-      ],
-      "js": [
-        "browser-polyfill.js",
-        "jquery.min.js",
-        "content.js"
-      ]
-    }
-  ],
-  "background": {
-    "scripts": [
-      "browser-polyfill.js",
-      "jquery.min.js",
-      "background.js"
-    ]
-  },
   "permissions": [
-    "webRequest",
-    "webRequestBlocking",
-    "*://*.imgur.com/*",
-    "*://proxy.duckduckgo.com/*"
-  ]
+    "declarativeNetRequest"
+  ],
+  "host_permissions": [
+    "*://imgur.com/*",
+    "*://i.imgur.com/*"
+  ],
+  "declarative_net_request": {
+    "rule_resources": [
+      {
+        "id": "ruleset_1",
+        "enabled": true,
+        "path": "rules.json"
+      }
+    ]
+  }
 }
