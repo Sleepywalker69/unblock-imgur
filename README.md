@@ -1,29 +1,35 @@
-# unblock-imgur
+# Unblock Imgur (Manifest V3)
 
-Loads Imgur content from DuckDuckGo proxy with basic functionality
+Loads Imgur content via a Rimgo mirror instance, bypassing regional blocks and fixing broken embeds.
 
 ## What this extension does
-This extension will redirect all imgur image links to duckduckgo proxy links, allowing it to work in regions where imgur is banned.
+This extension automatically redirects all `imgur.com` links to a working Rimgo instance (`rimgo.pussthecat.org`). It allows you to view Imgur content in regions where it is banned.
 
-### How I made this extension
-I forked the extension by erdemolcay, then used AI to make it work with embedded images and function on firefox.
+**Key Features:**
+* **Automatic Redirection:** Seamlessly sends `imgur.com` traffic to `rimgo.pussthecat.org`.
+* **Direct Image Unwrapping:** Automatically detects when you are viewing a single image on Rimgo and redirects you to the raw image file, bypassing the UI.
+* **Forum Embed Fixer:** Proactively finds broken Imgur embeds (hotlinked images) on forums and websites and rewrites them to load via Rimgo.
+* **Privacy Preserving:** Strips "Referrer" headers from embedded images to prevent the mirror from blocking them as "hotlinks."
 
-### Why did I use AI?
-I have no idea how to use Javascript, and I have no current plans to learn how to do so. But I wanted to get a fix out there for the recent imgur ban, so I used AI. I will always put a disclaimer in if I use AI for something here on github.
-
-### Does this extension fully work?
-It only works with direct imgur image links (like this: https://i.imgur.com/XXXXXXX.png), not galleries or the actual imgur website (like this: https://imgur.com/a/XXXXXXX).
+## Changes in Version 0.6
+* **Manifest V3:** Fully updated to meet modern Chrome Web Store security and performance standards.
+* **Rimgo Backend:** Replaced the broken DuckDuckGo proxy with a reliable Rimgo instance.
+* **Embed Support:** Added a specialized script to fix `[img]` tags on third-party forums.
 
 ## How to install
-(This process will be simplified in the future, for now it's pretty manual. Also, this probably doesn't work on mobile, sorry)  
-Download this extension from [the releases page](https://github.com/Kraggle09/unblock-imgur/releases), and unzip it.
 
-### Chrome, Edge, and other Chromium browsers
-Click the 3 dots in the top right corner, extensions, and manage extensions. 
+### Developer Mode (Manual)
+1.  Download or clone this repository.
+2.  Open your browser and go to `chrome://extensions/` (Chrome/Edge/Brave) or `about:debugging` (Firefox).
+3.  Enable **Developer Mode** (usually a toggle in the top right).
+4.  Click **"Load unpacked"**.
+5.  Select the folder containing these files.
 
-Turn on developer mode. Click "Load Unpacked", and choose the unzipped folder.
+### Publishing to Web Store
+1.  Zip all the files in this folder (ensure `manifest.json` is at the root of the zip).
+2.  Upload the `.zip` to the Chrome Web Store Developer Dashboard.
+3.  Pay the registration fee (if you haven't already).
+4.  Submit for review.
 
-Imgur images should now be redirected to duckduckgo ones.
-
-### Firefox
-**WIP**
+## Disclaimer
+This extension uses a public Rimgo instance (`rimgo.pussthecat.org`). If this instance goes offline, you can edit `rules.json` and `forum_fix.js` to point to a different working instance.
